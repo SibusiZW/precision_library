@@ -1,11 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Log In | Precision Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
-    
+<body class="min-h-screen bg-[#dddddd] flex flex-col items-center justify-center">
+    <div class="w-[350px] p-8 bg-white rounded-[10px] shadow-md">
+        <div class="flex flex-col items-center justify-center">
+            <img src="{% static 'img/logo.png' %}" class="w-[200px] mb-4">
+        </div>
+        <form method="post">
+            <input name="usr" placeholder="Enter username" class="border border-blue-500 rounded-md p-2 w-full mb-2 outline-none" type="text" required>
+            <input name="pwd" placeholder="Enter password" class="border border-blue-500 rounded-md p-2 w-full mb-2 outline-none" type="password" required>
+
+            <button type="submit" class="w-full text-white hover:bg-blue-600 p-2 bg-blue-500 rounded-md">Log In</button>
+
+            <div class="flex text-gray-500 items-center justify-center mt-2">
+                <span>Don't have an account? <a href="">Sign Up!</a></span> 
+            </div>
+        </form>
+    </div>
 </body>
 </html>
