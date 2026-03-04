@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -12,7 +12,7 @@ def login_view(request):
 
         if user:
             login(request, user)
-            return HttpResponse('Logged In!')
+            return redirect('home')
         else:
             return HttpResponse('Incorrect username/password')
 
@@ -26,5 +26,6 @@ def register_view(request):
 
         obj = User.objects.create_user(username, email, password)
         obj.save()
+        return redirect('login')
 
     return render(request, 'register.html')
