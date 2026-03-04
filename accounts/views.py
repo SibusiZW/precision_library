@@ -19,4 +19,12 @@ def login_view(request):
     return render(request, 'login.html')
 
 def register_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        username = request.POST.get('usr')
+        password = request.POST.get('pwd')
+
+        obj = User.objects.create_user(username, email, password)
+        obj.save()
+
     return render(request, 'register.html')
