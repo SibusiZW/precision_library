@@ -25,7 +25,7 @@
 
             <p class="mt-4">
                 <a class="bg-blue-500 text-white p-2 rounded-md ml-2" href="">Edit</a>
-                <a class="bg-red-800 text-white p-2 rounded-md ml-2" href="">Delete</a>
+                <a class="bg-red-800 text-white p-2 rounded-md ml-2" href="{% url 'delete' book.pk %}">Delete</a>
             </p>
         </div>
     {% endfor %}

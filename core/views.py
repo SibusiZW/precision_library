@@ -31,6 +31,13 @@ def add_book(request):
     return render(request, 'add_book.html', { 'form': form })
 
 @login_required(login_url='/auth/login/')
+def delete_book(request, pk):
+    obj = Book.objects.get(pk=pk)
+    obj.delete()
+
+    return redirect('home')
+
+@login_required(login_url='/auth/login/')
 def signout(request):
     logout(request)
     return redirect('/auth/login/')
