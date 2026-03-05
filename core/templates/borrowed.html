@@ -14,7 +14,7 @@
             <p class="text-gray-500 mb-4">Issued on {{ book.date_issued }}</p>
 
             <p class="mt-4">
-                <a class="bg-blue-500 text-white p-2 rounded-md ml-2" href="">Edit</a>
+                <a class="bg-blue-500 text-white p-2 rounded-md ml-2" href="{% url 'edit' book.pk %}">Edit</a>
                 <a class="bg-red-800 text-white p-2 rounded-md ml-2" href="{% url 'delete' book.pk %}">Delete</a>
             </p>
         </div>

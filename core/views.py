@@ -39,6 +39,12 @@ def delete_book(request, pk):
     return redirect('home')
 
 @login_required(login_url='/auth/login/')
+def edit_book(request, pk):
+    book = Book.objects.get(pk=pk)
+
+    return render(request, 'edit.html')
+
+@login_required(login_url='/auth/login/')
 def signout(request):
     logout(request)
     return redirect('/auth/login/')
