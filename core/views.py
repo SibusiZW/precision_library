@@ -9,6 +9,9 @@ def home(request):
     books = Book.objects.all()
     return render(request, 'home.html', { 'user': request.user, 'books': books })
 
+def borrowed_books(request):
+    return render(request, 'borrowed.html')
+
 @login_required(login_url='/auth/login/')
 def signout(request):
     logout(request)

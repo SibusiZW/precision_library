@@ -5,8 +5,9 @@
     <span class="text-gray-500 mb-4">This is Precision Library!</span>
     <p class="text-gray-900 text-sm mb-6">Scroll down to view more books</p>
 
+    <div class="flex flex-col items-center">
     {% for book in books %}
-        <div class="p-4 flex flex-col text-center items-center justify-center border border-blue-500 rounded-md shadow-xl mb-4">
+        <div class="p-4 flex w-full max-w-[350px] flex-col text-center items-center justify-center border border-blue-500 rounded-md shadow-xl mb-4">
             <p class="text-3xl mb-2 font-bold">{{ book.name }}</p>
             <p class="text-gray-500 mb-4">By {{ book.author }}</p>
             <p class="text-gray-500 mb-4">Borrowed by {{ book.name_of_borrower }}</p>
@@ -28,4 +29,5 @@
             </p>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
