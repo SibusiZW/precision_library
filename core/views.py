@@ -25,6 +25,7 @@ def add_book(request):
 
         if form.is_valid():
             form.save()
+            return redirect('home')
     else:
         form = BookForm()
 
