@@ -3,4 +3,29 @@
 {% block content %}
     <h1 class="text-3xl font-bold mb-6">Welcome, {{ user }}!</h1>
     <span class="text-gray-500 mb-4">This is Precision Library!</span>
+    <p class="text-gray-900 text-sm mb-6">Scroll down to view more books</p>
+
+    {% for book in books %}
+        <div class="p-4 flex flex-col text-center items-center justify-center border border-blue-500 rounded-md shadow-xl mb-4">
+            <p class="text-3xl mb-2 font-bold">{{ book.name }}</p>
+            <p class="text-gray-500 mb-4">By {{ book.author }}</p>
+            <p class="text-gray-500 mb-4">Borrowed by {{ book.name_of_borrower }}</p>
+            <p class="text-gray-500 mb-4">Class Of Borrower: {{ book.class_of_borrower }}</p>
+            <p class="text-gray-500 mb-4">Issued on {{ book.date_issued }}</p>
+            <div>
+                {% if book.status == "Good" %}
+                    <p class="text-green-500">Good</p>
+                {% elif book.status == "Bad" %}
+                    <p class="text-red-500">Bad</p>
+                {% elif book.status == "Borrowed" %}
+                    <p class="text-orange-500">Borrowed</p>
+                {% endif %}
+            </div>
+
+            <p class="mt-4">
+                <a class="bg-blue-500 text-white p-2 rounded-md ml-2" href="">Edit</a>
+                <a class="bg-red-800 text-white p-2 rounded-md ml-2" href="">Delete</a>
+            </p>
+        </div>
+    {% endfor %}
 {% endblock %}
