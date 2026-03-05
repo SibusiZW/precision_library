@@ -6,11 +6,13 @@ from .models import Book
 # Create your views here.
 @login_required(login_url='/auth/login/')
 def home(request):
-    books = Book.objects.all()
+    books = Book.objects.all().order_by('name')
     return render(request, 'home.html', { 'user': request.user, 'books': books })
 
 def borrowed_books(request):
-    return render(request, 'borrowed.html')
+    books = Book.objects.filter(status='Borrowed').order_by('name')
+
+    return render(request, 'borrowed.html', { 'books': books })
 
 @login_required(login_url='/auth/login/')
 def signout(request):
