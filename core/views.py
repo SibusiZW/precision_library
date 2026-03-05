@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from .forms import BookForm
 from .models import Book
 
 # Create your views here.
@@ -19,7 +20,15 @@ def borrowed_books(request):
 
 @login_required(login_url='/auth/login/')
 def add_book(request):
-    return render(request, 'add_book.html')
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+    else:
+        form = BookForm()
+
+    return render(request, 'add_book.html', { 'form': form })
 
 @login_required(login_url='/auth/login/')
 def signout(request):

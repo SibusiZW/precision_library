@@ -1,1 +1,15 @@
 {% extends 'base.html' %}
+
+{% block content %}
+    <div class="flex flex-col min-h-screen items-center justify-center">
+        <div class="p-4 text-center w-full max-w-[350px] bg-[#dddddd] rounded-md shadow-md">
+            <h1 class="text-xl font-bold mb-6">Add a Book</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="p-2 bg-blue-500 w-full rounded-[10px] text-white hover:bg-blue-700" type="submit">Save</button>
+            </form>
+            
+        </div>
+    </div>
+{% endblock %}
