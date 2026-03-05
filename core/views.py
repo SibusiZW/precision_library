@@ -7,12 +7,14 @@ from .models import Book
 @login_required(login_url='/auth/login/')
 def home(request):
     books = Book.objects.all().order_by('name')
-    return render(request, 'home.html', { 'user': request.user, 'books': books })
+    count = books.count()
+    return render(request, 'home.html', { 'user': request.user, 'books': books, 'count': count })
 
 def borrowed_books(request):
     books = Book.objects.filter(status='Borrowed').order_by('name')
+    count = books.count()
 
-    return render(request, 'borrowed.html', { 'books': books })
+    return render(request, 'borrowed.html', { 'books': books, 'count': count })
 
 @login_required(login_url='/auth/login/')
 def signout(request):
