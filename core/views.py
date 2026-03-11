@@ -42,7 +42,24 @@ def delete_book(request, pk):
 def edit_book(request, pk):
     book = Book.objects.get(pk=pk)
 
-    return render(request, 'edit.html')
+    if request.method == "POST":
+        name = request.POST.get('name')
+        author = request.POST.get('author')
+        borrower = request.POST.get('borrower')
+        b_class = request.POST.get('class')
+        status = request.POST.get('status')
+
+        book.name = name
+        book.author = author
+        book.name_of_borrower = borrower
+        book.class_of_borrower = b_class
+        book.status = status
+
+        book.save()
+
+        return redirect('home')
+
+    return render(request, 'edit.html', { 'book': book })
 
 @login_required(login_url='/auth/login/')
 def signout(request):
